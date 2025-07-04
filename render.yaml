@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: kizu-url-shortener
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://long22072003:long22072003@cluster0.6kd1y2c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - key: FLASK_DEBUG
+        value: "0"
+
