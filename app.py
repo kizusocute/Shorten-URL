@@ -1,5 +1,6 @@
 from flask import Flask
 from routes.url_routes import url_bp
+import os
 
 # Nếu muốn hỗ trợ CORS (khi có frontend riêng)
 from flask_cors import CORS
