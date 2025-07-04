@@ -11,5 +11,5 @@ CORS(app)  # Cho phép CORS nếu cần
 app.register_blueprint(url_bp)
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    port = int(os.environ.get("PORT", 5000))  # Railway sẽ cấp PORT tự động
+    app.run(debug=False, host='0.0.0.0', port=port)
