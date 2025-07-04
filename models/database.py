@@ -1,18 +1,21 @@
+# models/database.py
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 
-# Tải biến môi trường từ file .env
+# Tải biến môi trường từ file .env (chỉ hoạt động local)
 load_dotenv()
 
-# Lấy URI từ file .env
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
+# Lấy URI từ biến môi trường, không dùng mặc định localhost
+MONGO_URI = os.getenv("MONGO_URI")
 
-# Tạo client MongoDB
+if not MONGO_URI:
+    raise Exception("❌ MONGO_URI chưa được thiết lập!")
+
+# Tạo MongoDB client
 client = MongoClient(MONGO_URI)
 
-# Chọn database tên "url_shortener_db"
+# Database và collection
 db = client["url_shortener_db"]
-
-# Lấy collection "urls" trong DB
 urls_collection = db["urls"]
+
